@@ -154,6 +154,13 @@ def start_recording(url):
                 text: e.target.value
             });
         }, true);
+        window.addEventListener('scroll', function(){
+            recordStep({
+                action: 'scroll',
+                x: window.scrollX,
+                y: window.scrollY
+            });
+        }, true);
     """
 
     # Ensure the recorder script is injected on every new document
@@ -170,14 +177,23 @@ def stop_recording(driver, start_url):
     events = json.loads(events_json) if events_json else []
     steps = [{"action": "visit", "url": start_url, "wait": 1}]
     for event in events:
-        step = {
-            "action": event.get("action"),
-            "selector_type": event.get("selector_type"),
-            "selector_value": event.get("selector_value"),
-            "wait": 1
-        }
-        if event.get("action") == "input":
-            step["text"] = event.get("text", "")
+        action = event.get("action")
+        if action == "scroll":
+            step = {
+                "action": "scroll",
+                "x": event.get("x", 0),
+                "y": event.get("y", 0),
+                "wait": 1
+            }
+        else:
+            step = {
+                "action": action,
+                "selector_type": event.get("selector_type"),
+                "selector_value": event.get("selector_value"),
+                "wait": 1
+            }
+            if action == "input":
+                step["text"] = event.get("text", "")
         steps.append(step)
     return steps
 
@@ -356,6 +372,8 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
                     "selector_value": step.get("selector_value", ""),
                     "url": step.get("url", ""),
                     "text": step.get("text", ""),
+                    "x": step.get("x", 0),
+                    "y": step.get("y", 0),
                     "index": index,
                     "wait_time": wait_time,
                     "actual_url": "",
@@ -444,6 +462,15 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
                             step_log["status"] = "✅ Success"
                         else:
                             step_log["status"] = "❌ Failed"
+
+                elif action == "scroll":
+                    x = step.get("x", 0)
+                    y = step.get("y", 0)
+                    driver.execute_script("window.scrollTo(arguments[0], arguments[1]);", x, y)
+                    screenshot_filename = f"{SCREENSHOT_DIR}/step_{timestamp}_{action}_{int(time.time()*1000)}.png"
+                    driver.save_screenshot(screenshot_filename)
+                    step_log["screenshot"] = screenshot_filename
+                    step_log["status"] = f"✅ Scrolled to ({x}, {y})"
 
                 if csv_row is not None and "LoginEmail" in csv_row:
                     step_log["LoginEmail"] = csv_row["LoginEmail"]
