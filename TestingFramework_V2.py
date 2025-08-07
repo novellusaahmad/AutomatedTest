@@ -44,41 +44,49 @@ def get_image_scale(img_path, target_width_px=200, target_height_px=200):
         return 1.0, 1.0
 
 def identify_selectors_from_html(html_tag):
-    """Extract CSS selectors from HTML snippet"""
+    """Extract selectors from HTML snippet in priority order"""
     soup = BeautifulSoup(html_tag, 'html.parser')
     element = soup.find()
-    
+
     if element is None:
         return None
-    
+
     selectors = {}
-    
+
     # ID selector
     if element.get('id'):
         selectors['id'] = element.get('id')
-    
-    # Name selector
-    if element.get('name'):
-        selectors['name'] = element.get('name')
-    
-    # CSS class selector
-    if element.get('class'):
-        selectors['css_selector'] = f".{' '.join(element.get('class'))}"
-    
+
     # XPath selector
     xpath = f"//{element.name}"
     if element.get('id'):
         xpath += f"[@id='{element.get('id')}']"
+    elif element.get('class'):
+        xpath += f"[contains(@class, '{element.get('class')[0]}')]"
     elif element.get('name'):
         xpath += f"[@name='{element.get('name')}']"
-    if element.get('class'):
-        xpath += f"[contains(@class, '{' '.join(element.get('class'))}')]"
     selectors['xpath'] = xpath
-    
+
+    # Class name selector
+    if element.get('class'):
+        selectors['class_name'] = element.get('class')[0]
+
+    # CSS selector
+    if element.get('id'):
+        selectors['css_selector'] = f"#{element.get('id')}"
+    elif element.get('class'):
+        selectors['css_selector'] = '.' + '.'.join(element.get('class'))
+    else:
+        selectors['css_selector'] = element.name
+
+    # Name selector
+    if element.get('name'):
+        selectors['name'] = element.get('name')
+
     # Placeholder selector
     if element.get('placeholder'):
         selectors['placeholder'] = element.get('placeholder')
-    
+
     return selectors
 
 def load_test_cases():
@@ -139,18 +147,50 @@ def start_recording(url):
             }
             return path.join(' > ');
         }
+        function getXPath(el){
+            if (el.id !== '') {
+                return "//*[@id='" + el.id + "']";
+            }
+            if (el === document.body) {
+                return '//body';
+            }
+            var ix = 0;
+            var siblings = el.parentNode.childNodes;
+            for (var i = 0; i < siblings.length; i++) {
+                var sibling = siblings[i];
+                if (sibling === el) {
+                    return getXPath(el.parentNode) + '/' + el.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+                }
+                if (sibling.nodeType === 1 && sibling.tagName === el.tagName) {
+                    ix++;
+                }
+            }
+        }
+        function getBestSelector(el){
+            if (el.id) return {type: 'id', value: el.id};
+            var xp = getXPath(el);
+            if (xp) return {type: 'xpath', value: xp};
+            if (el.className) return {type: 'class_name', value: el.className.split(' ')[0]};
+            var css = cssPath(el);
+            if (css) return {type: 'css_selector', value: css};
+            if (el.name) return {type: 'name', value: el.name};
+            if (el.getAttribute('placeholder')) return {type: 'placeholder', value: el.getAttribute('placeholder')};
+            return {type: 'css_selector', value: cssPath(el)};
+        }
         document.addEventListener('click', function(e){
+            var sel = getBestSelector(e.target);
             recordStep({
                 action: 'click',
-                selector_type: 'css_selector',
-                selector_value: cssPath(e.target)
+                selector_type: sel.type,
+                selector_value: sel.value
             });
         }, true);
         document.addEventListener('input', function(e){
+            var sel = getBestSelector(e.target);
             recordStep({
                 action: 'input',
-                selector_type: 'css_selector',
-                selector_value: cssPath(e.target),
+                selector_type: sel.type,
+                selector_value: sel.value,
                 text: e.target.value
             });
         }, true);
