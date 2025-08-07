@@ -465,8 +465,37 @@ def create_excel_with_screenshots(logs_df, writer):
                     worksheet.set_column(col_num, col_num, max_len)
 
 # Streamlit App Configuration
-st.set_page_config(layout="wide")
-st.title("Test Automation Framework")
+st.set_page_config(
+    page_title="Automation Test Dashboard",
+    page_icon="Logo.png",
+    layout="wide",
+)
+
+st.markdown(
+    """
+    <style>
+        .block-container {padding-top: 2rem;}
+        .stButton>button {
+            background-color: #4F46E5;
+            color: white;
+            border-radius: 4px;
+            border: none;
+        }
+        .stButton>button:hover {
+            background-color: #4338CA;
+            color: white;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+logo_col, title_col = st.columns([1, 5])
+with logo_col:
+    st.image("Logo.png", width=64)
+with title_col:
+    st.title("Test Automation Framework")
+    st.caption("Create, schedule, and run automated tests with ease.")
 
 # Initialize session state
 if "steps" not in st.session_state:
