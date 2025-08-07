@@ -547,6 +547,8 @@ if "record_driver" not in st.session_state:
     st.session_state.record_driver = None
 if "record_url" not in st.session_state:
     st.session_state.record_url = ""
+if "record_url_input" not in st.session_state:
+    st.session_state.record_url_input = ""
 
 # Sidebar for test case management
 with st.sidebar:
@@ -621,7 +623,7 @@ with st.sidebar:
 
     # Recording helper
     st.subheader("🎥 Record Steps")
-    record_url = st.text_input("URL to Record", key="record_url")
+    record_url = st.text_input("URL to Record", key="record_url_input")
     col_rec1, col_rec2 = st.columns(2)
     with col_rec1:
         if st.session_state.record_driver is None and st.button("Start Recording"):
