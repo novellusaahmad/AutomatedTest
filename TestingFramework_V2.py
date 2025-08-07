@@ -197,8 +197,8 @@ def stop_recording(driver, start_url):
         steps.append(step)
     return steps
 
-def find_element(driver, selector_type, selector_value, index=0):
-    """Universal element finder with multiple selector types"""
+def find_element(driver, selector_type, selector_value, index=0, timeout=10):
+    """Universal element finder with waiting and multiple selector types"""
     selectors = {
         "id": By.ID,
         "name": By.NAME,
@@ -208,15 +208,33 @@ def find_element(driver, selector_type, selector_value, index=0):
         "tag_name": By.TAG_NAME,
         "link_text": By.LINK_TEXT,
         "partial_link_text": By.PARTIAL_LINK_TEXT,
-        "placeholder": By.XPATH
+        "placeholder": By.XPATH,
     }
+
+    # Convert placeholder selector to XPath so it can be located.
     if selector_type == "placeholder":
         selector_value = f"//*[@placeholder='{selector_value}']"
-    elements = driver.find_elements(selectors[selector_type], selector_value)
-    if elements and index < len(elements):
-        return elements[index]
+        by = By.XPATH
     else:
-        raise Exception(f"No element found at index {index} for {selector_type}: {selector_value}")
+        by = selectors[selector_type]
+
+    # Wait until the desired element is present and visible. Using a lambda
+    # allows waiting for the specific index rather than just the first match.
+    def _locate(driver):
+        elems = driver.find_elements(by, selector_value)
+        if len(elems) > index and elems[index].is_displayed():
+            return elems[index]
+        return False
+
+    element = WebDriverWait(driver, timeout).until(_locate)
+
+    # Best effort to ensure the element is interactable before returning.
+    try:
+        WebDriverWait(driver, timeout).until(EC.element_to_be_clickable((by, selector_value)))
+    except Exception:
+        pass
+
+    return element
 
 def substitute_placeholders(text, csv_row):
     """Replace {{placeholders}} with values from CSV row"""
