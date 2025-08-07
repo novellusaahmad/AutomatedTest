@@ -453,23 +453,38 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
 
                 elif action == "select_dropdown":
                     dropdown = find_element(driver, step["selector_type"], step["selector_value"], index)
-                    dropdown.click()
+                    try:
+                        dropdown.click()
+                    except Exception:
+                        # Fallback to JavaScript click if normal click fails
+                        driver.execute_script("arguments[0].click();", dropdown)
+
                     screenshot_filename = f"{SCREENSHOT_DIR}/step_{timestamp}_{action}_{int(time.time()*1000)}.png"
                     driver.save_screenshot(screenshot_filename)
                     step_log["screenshot"] = screenshot_filename
-                    time.sleep(1)
 
                     expected_text = substitute_placeholders(step["text"], csv_row).strip()
-                    items = driver.find_elements(By.CSS_SELECTOR, "li.el-dropdown-menu__item")
+
+                    # Wait for dropdown options to be visible before searching
+                    try:
+                        WebDriverWait(driver, 5).until(
+                            lambda d: any(el.is_displayed() for el in d.find_elements(By.CSS_SELECTOR, "li.el-dropdown-menu__item"))
+                        )
+                    except Exception:
+                        step_log["status"] = "❌ Dropdown options not visible"
+                        continue
+
+                    items = [el for el in driver.find_elements(By.CSS_SELECTOR, "li.el-dropdown-menu__item") if el.is_displayed()]
                     selected = False
                     for item in items:
-                        if item.is_displayed() and item.text.strip() == expected_text:
+                        if item.text.strip() == expected_text:
                             item.click()
                             step_log["status"] = f"✅ Selected '{item.text.strip()}'"
                             selected = True
                             break
                     if not selected:
                         step_log["status"] = f"❌ Dropdown item '{expected_text}' not found"
+
                     screenshot_filename = f"{SCREENSHOT_DIR}/step_{timestamp}_{action}_{int(time.time()*1000)}.png"
                     driver.save_screenshot(screenshot_filename)
                     step_log["screenshot"] = screenshot_filename
