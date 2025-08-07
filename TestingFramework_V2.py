@@ -574,8 +574,10 @@ if "scheduled_tests" not in st.session_state:
     st.session_state.scheduled_tests = load_scheduled_tests()
 if "record_driver" not in st.session_state:
     st.session_state.record_driver = None
-if "record_url" not in st.session_state:
-    st.session_state.record_url = ""
+# Store the URL used for recording separately from the text input to avoid
+# conflicts with widget-managed keys.
+if "recording_url" not in st.session_state:
+    st.session_state.recording_url = ""
 if "record_url_input" not in st.session_state:
     st.session_state.record_url_input = ""
 
@@ -658,13 +660,15 @@ with st.sidebar:
         if st.session_state.record_driver is None and st.button("Start Recording"):
             if record_url:
                 st.session_state.record_driver = start_recording(record_url)
-                st.session_state.record_url = record_url
+                # Save the URL used for recording so it can be referenced when
+                # stopping the recording later.
+                st.session_state.recording_url = record_url
                 st.success("Recording started. Interact with the browser and then stop recording.")
             else:
                 st.warning("Please provide a URL to record.")
     with col_rec2:
         if st.session_state.record_driver is not None and st.button("Stop Recording"):
-            recorded_steps = stop_recording(st.session_state.record_driver, st.session_state.record_url)
+            recorded_steps = stop_recording(st.session_state.record_driver, st.session_state.recording_url)
             st.session_state.steps.extend(recorded_steps)
             st.session_state.record_driver = None
             st.success("Recording stopped and steps added.")
