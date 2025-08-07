@@ -19,7 +19,8 @@ Use below html tag for RTL version
     />
     <link rel="stylesheet" href="/fonticon/fonticon.css" />
     <link rel="stylesheet" href="/splash-screen.css" />
-    <title>Novellus CRM</title>
+    <title>Automated Test Dashboard</title>
+    <meta name="description" content="Automation test dashboard for creating and running automated tests." />
     <script type="module" crossorigin src="/assets/index-VKdgZKVD.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-E9YWGemU.css">
   </head>
@@ -58,8 +59,8 @@ Use below html tag for RTL version
     <!-- built files will be auto injected -->
     <!--begin::Loading markup-->
     <div id="splash-screen" class="splash-screen">
-      <img src="/media/logos/novellus-signup.svg" alt="Metronic logo" />
-      <span>Loading ...</span>
+      <img src="/Logo.png" alt="Automation logo" />
+      <span>Loading Test Dashboard...</span>
     </div>
     <!--end::Loading markup-->
   </body>
