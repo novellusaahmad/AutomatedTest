@@ -1,0 +1,3596 @@
+[
+    {
+        "name": "log",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Broker",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "aahmad@novelluscapital.co.uk"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "747982"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "users-brokers-listing-add-new-brokers",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_email",
+                "wait": 0,
+                "text": "ASAD@GMAIL.COM"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_name",
+                "wait": 0,
+                "text": "Asad Ahmad"
+            }
+        ]
+    },
+    {
+        "name": "Create case",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "cases-cases-listing-add-case",
+                "wait": 2
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "deal_create_edit_form_name",
+                "wait": 0,
+                "text": "{{CASE_NAME}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "deal_create_edit_form_case_owner_id_select",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "deal_create_edit_form_case_owner_id_select",
+                "wait": 3,
+                "text": "{{CASE_OWNER}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "case-management-deal-submit-button",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "UI Error Test",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 2
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/users-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-individual-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-companies-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-group-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-agents-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/notification-templates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/feetype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/funder-interest-rate-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/introducer-types-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/assetstype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/lenders-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/service-providers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/variable-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/financial-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/forms-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/history-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/forms-type-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=2",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=3",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=4",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/settings-deal-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/ccr-reports/ccr-reports-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/loan-notes/csx-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/loan-notes/intercompany-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/loan-notes/exception-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-comparison",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-profile-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-lifetime",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-notes",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-linked-cases",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/borrowers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/forms-status-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals-create-update/{{DEAL}}",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/base-floor-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/assets-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/exit-fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/my-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/completed-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/deal-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/documents-listing-category",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/documents-manager-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/activity-logs",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/quotes-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-from-deal",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/settlement-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-companies-logs/261",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing-logs/514",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "UI Error DEV",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://devsite:D3vS1te123$1@novellus-crm-app.dev.jdd.agency/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/users-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/client-individual-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/client-companies-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/client-group-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/brokers/brokers-agents-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/notification-templates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/feetype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/funder-interest-rate-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/introducer-types-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/assetstype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/lenders-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/service-providers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/variable-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/financial-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/forms-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/history-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/forms-type-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/tasks-listing?lendingTypeId=2",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/tasks-listing?lendingTypeId=3",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/tasks-listing?lendingTypeId=4",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/system/settings/settings-deal-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/ccr-reports/ccr-reports-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/loan-notes/csx-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/loan-notes/intercompany-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/loan-notes/exception-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/drawdown-comparison",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/drawdown-profile-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/drawdown-lifetime",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/drawdown-notes",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/drawdown-linked-cases",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/borrowers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/forms-status-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals-create-update/{{DEAL}}",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/base-floor-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/assets-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/exit-fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/my-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/completed-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/deal-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/documents-listing-category",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/documents-manager-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/activity-logs",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/quotes-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/notification-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-from-deal",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/case-manager/deals/{{DEAL}}/settlement-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/client-companies-logs/261",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://novellus-crm-app.dev.jdd.agency/dashboard#/user-management/brokers/brokers-listing-logs/514",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Broker",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "users-brokers-listing-add-new-brokers",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_name",
+                "wait": 0,
+                "text": "{{Company}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_email",
+                "wait": 0,
+                "text": "{{Broker_Email}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_phone",
+                "wait": 0,
+                "text": "{{Broker_Phone}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_commission_rate",
+                "wait": 0,
+                "text": "{{Broker_Commission Rate}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_location_select",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_location_UK",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_house_number",
+                "wait": 0,
+                "text": "{{Broker_Hse_Number}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_street",
+                "wait": 0,
+                "text": "{{Broker_Street}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_district",
+                "wait": 0,
+                "text": "{{Broker_Town}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_city",
+                "wait": 0,
+                "text": "{{Broker_City}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_county",
+                "wait": 0,
+                "text": "{{Broker_County}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_country-item",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-group-create-update-country-country-list-index-181",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_postcode",
+                "wait": 0,
+                "text": "{{Broker_Postcode}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "brokers_modal_add_broker",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Introducer",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "introducer-listing-add-new-introducer",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-contact",
+                "wait": 0,
+                "text": "{{Introducer_Name}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-email",
+                "wait": 0,
+                "text": "{{Introducer_Email}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-phone",
+                "wait": 0,
+                "text": "{{Introducer_Phone}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-company",
+                "wait": 0,
+                "text": "{{Introducer_Company}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-introducer-type-item",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-introducer-type-2",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-phone",
+                "wait": 0,
+                "text": "{{Introducer_Phone}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-submit-form",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Borrower",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-individual-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "client-borrower-listing-add-new-borrower",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-email",
+                "wait": 0,
+                "text": "{{Borrower_Email}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-nationality",
+                "wait": 0,
+                "text": "{{Borrower_Nationality}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-first_name",
+                "wait": 0,
+                "text": "{{Borrower_Firstname}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-last_name",
+                "wait": 3,
+                "text": "{{Borrower_Lastname}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-middle_name",
+                "wait": 3,
+                "text": "{{Borrower_Middlename}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-phone",
+                "wait": 0,
+                "text": "{{Borrower_Phone}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-nationality",
+                "wait": 0,
+                "text": "{{Borrower_Nationality}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-passport_number",
+                "wait": 0,
+                "index": 0,
+                "text": "{{Borrower_Passport}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-permanent_uk_resident_details",
+                "wait": 0,
+                "text": "{{Borrower_Residency}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-permanent_uk_resident",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-uk_permanent-1",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-marital_status_id",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-marital-status-4",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-title",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-title-6",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob_day",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob-day-20",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob_month",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob-month-11",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob_year",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-dob-year-25",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-house_number",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_house_number}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-street",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_street}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-district",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_district}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-city",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_city}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-county",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_county}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-postcode",
+                "wait": 0,
+                "index": 0,
+                "text": "{{address_postcode}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-ownership_type_id",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-ownership_type_id-0",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-country-item",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-country-country-list-index-181",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-lived_for_years",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-lived_for_years-10",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-lived_for_months",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-lived_for_months-11",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-employment_status",
+                "wait": 0,
+                "index": 0,
+                "text": "{{employment_status}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-employer_name",
+                "wait": 0,
+                "index": 0,
+                "text": "{{employer_name}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-nature_of_business",
+                "wait": 0,
+                "index": 0,
+                "text": "{{nature_of_business}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-job_title",
+                "wait": 0,
+                "index": 0,
+                "text": "{{job_title}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-total_gross_income",
+                "wait": 0,
+                "index": 0,
+                "text": "{{total_gross_income}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-borrower-submit-form",
+                "wait": 4,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create System User",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/users-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-user-listing-add-new-user",
+                "wait": 5
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-first-name",
+                "wait": 5,
+                "text": "{{SystemUserFirstName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-role-0",
+                "wait": 5,
+                "index": 1
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-middle-name",
+                "wait": 5,
+                "text": "{{SystemUserMiddleName}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-last-name",
+                "wait": 5,
+                "text": "{{SystemUserLastName}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-email",
+                "wait": 5,
+                "text": "{{SystemUserEmail}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-phone",
+                "wait": 5,
+                "text": "{{SystemUserPhone}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-role-0",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-users-create-update-submit",
+                "wait": 5
+            }
+        ]
+    },
+    {
+        "name": "Delete Client Individual",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-individual-listing#",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 7,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//a[contains(text(), 'Delete')]",
+                "wait": 7,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Delete Broker",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[contains(@class, 'brokers_listing_delete_broker')]",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Delete Introducer",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "introducer-listing-delete-introducer",
+                "wait": 3,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Delete User",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, \"btn\") and contains(@class, \"add-button\")]//button[contains(@class, \"btn\") and contains(@class, \"add-button\")]",
+                "wait": 7,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-user-listing-search",
+                "wait": 5,
+                "index": 0,
+                "text": "{{SystemUserFirstName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "user-management-users-listing-menu-delete",
+                "wait": 3,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Edit Broker",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[contains(@class, 'brokers_listing_edit_broke')]",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_create_edit_modal_name",
+                "wait": 0,
+                "index": 0,
+                "text": "EDITED"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "brokers_modal_add_broker",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Edit Introducer",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "introducer-listing-edit-introducer",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-company",
+                "wait": 0,
+                "index": 0,
+                "text": "EDITED"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-introducers-submit-form",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Fee Type",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/feetype-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "add-button",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "",
+                "wait": 0,
+                "index": 0,
+                "text": "FeeType"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//div[contains(@class, 'el-select__selected-item') and contains(@class, 'el-select__placeholder')]",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "deal_create_edit_form_lending_type_0",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//label[text()='Lending types']",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//label[span[text()=' % ']]",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "0.00",
+                "wait": 0,
+                "index": 0,
+                "text": "25"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[@class='btn btn-lg add-button text-white']",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Client Company",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-companies-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-listing-add-new-company",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-name",
+                "wait": 0,
+                "index": 0,
+                "text": "{{Client_Company_Name}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-email",
+                "wait": 0,
+                "index": 0,
+                "text": "{{Client_Company_Email}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-phone",
+                "wait": 0,
+                "index": 0,
+                "text": "{{Client_Company_Phone}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-house_number",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-house_number}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-street",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-street}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-district",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-district}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-city",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-city}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-county",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-county}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-postcode",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-postcode}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-country-item",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-country-country-list-index-181",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-landline",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-landline}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-mobile",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client-company-mobile}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-company-create-update-submit-button",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Lender",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/lenders-listing",
+                "wait": 5
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "fa-plus",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-lenders-create-update-name",
+                "wait": 0,
+                "index": 0,
+                "text": "{{LenderName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "el-switch__action",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "css_selector",
+                "selector_value": "button.add-button",
+                "wait": 5,
+                "index": 1
+            }
+        ]
+    },
+    {
+        "name": "Client Company Group",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/client-group-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "user-management-client-group-listing-add-new-group",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-user-management-client-group-name",
+                "wait": 0,
+                "index": 0,
+                "text": "{{client_group_name}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "el-select__selection",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-user-management-client-group-client-individual-0",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-user-management-client-group-client-individual-1",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-user-management-client-group-client-individual-item",
+                "wait": 3,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "el-select__selection",
+                "wait": 3,
+                "index": 1
+            },
+            {
+                "action": "click",
+                "selector_type": "class_name",
+                "selector_value": "el-select__selection",
+                "wait": 3,
+                "index": 1
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-user-management-client-group-client-submit",
+                "wait": 3,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Delete Fee Type",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/feetype-listing",
+                "wait": 4
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Search",
+                "wait": 5,
+                "index": 0,
+                "text": "FeeType"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[text()='Delete']",
+                "wait": 3,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Broker Agent",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/user-management/brokers/brokers-agents-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "users-brokers-agents-listing-add-new-brokers",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_agent_create_edit_modal_name",
+                "wait": 0,
+                "index": 0,
+                "text": "{{broker_agent_name}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_agent_create_edit_modal_email",
+                "wait": 0,
+                "index": 0,
+                "text": "{{broker_agent_email}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_agent_create_edit_modal_phone",
+                "wait": 0,
+                "index": 0,
+                "text": "{{broker_agent_phone}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "css_selector",
+                "selector_value": ".el-select__selection",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "broker_agent_create_edit_modal_broker_broker_1",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "broker_agent_create_edit_modal_house_number",
+                "wait": 0,
+                "index": 0,
+                "text": "{{broker_agent_house_no}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "css_selector",
+                "selector_value": ".btn add-button",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Edit Lender",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/lenders-listing",
+                "wait": 5
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Search",
+                "wait": 1,
+                "index": 0,
+                "text": "{{LenderName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[text()='Edit ']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "css_selector",
+                "selector_value": "button.add-button",
+                "wait": 5,
+                "index": 1
+            }
+        ]
+    },
+    {
+        "name": "Delete Lender",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/lenders-listing",
+                "wait": 5
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Search",
+                "wait": 1,
+                "index": 0,
+                "text": "{{LenderName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[text()='Delete ']",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Service Provider",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/service-providers-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "system-settings-service-provider-add-new",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-forename",
+                "wait": 5,
+                "index": 0,
+                "text": "{{FirstName}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-surname",
+                "wait": 5,
+                "index": 0,
+                "text": "{{LastName}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-company",
+                "wait": 5,
+                "index": 0,
+                "text": "{{CompanyName}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-email",
+                "wait": 5,
+                "index": 0,
+                "text": "{{UserEmail}}"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-phone",
+                "wait": 5,
+                "index": 0,
+                "text": "{{Phone}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-provider_type_id-1",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-engagement-letter",
+                "wait": 5,
+                "index": 0,
+                "text": "{{EngagementDate}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "settings-service-provider-create-update-submit",
+                "wait": 5,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Delete Service Provider",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/service-providers-listing",
+                "wait": 5
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "system-settings-service-provider-listing-search",
+                "wait": 5,
+                "index": 0,
+                "text": "{{FirstName}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[text()='Delete ']",
+                "wait": 5,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//div[contains(@class, 'swal2-actions')]",
+                "wait": 5,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Update Financial Setting",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/financial-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-create-update-financial-settings-value-0",
+                "wait": 0,
+                "index": 0,
+                "text": "2000"
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "settings-create-update-financial-settings-value-1",
+                "wait": 0,
+                "index": 0,
+                "text": "5000"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "settings-create-update-financial-settings-submit",
+                "wait": 2,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Form",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard?#/system/settings/forms-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//a[contains(@class, 'btn add-button')]",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//div[contains(@class, 'add-section-button my-5 text-center')]",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "xpath",
+                "selector_value": "//input[contains(@class, 'form-control form-control-sm bg-transparent')]",
+                "wait": 0,
+                "index": 0,
+                "text": "Testname123"
+            },
+            {
+                "action": "input",
+                "selector_type": "xpath",
+                "selector_value": "//input[contains(@class, 'form-control form-control-sm bg-transparent')]",
+                "wait": 0,
+                "index": 1,
+                "text": "v123"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//select[contains(@class, 'form-control bg-transparent py-2')]",
+                "wait": 2,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//option",
+                "wait": 2,
+                "index": 1
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'btn add-button')]",
+                "wait": 0,
+                "index": 1
+            }
+        ]
+    },
+    {
+        "name": "Delete Form",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard?#/system/settings/forms-listing",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Search",
+                "wait": 0,
+                "index": 0,
+                "text": "Testname123"
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'el-tooltip__trigger') and @aria-haspopup='menu']",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//li[contains(@class, 'el-dropdown-menu__item')]",
+                "wait": 0,
+                "index": 2
+            }
+        ]
+    },
+    {
+        "name": "Create Task",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "system-settings-tasks-listing-add-new",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-system-settings-task-group-name",
+                "wait": 0,
+                "index": 0,
+                "text": "New Task Group"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-system-settings-task-group-submit",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "Create loan Criteria",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/system/settings/settings-deal-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "system-settings-settings-deal-listing-add-group",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "id",
+                "selector_value": "create-update-setting-group-name",
+                "wait": 0,
+                "index": 0,
+                "text": "Loan Criteria Auto Testing"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "create-update-setting-group-submit",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "system-settings-settings-deal-listing-add-group",
+                "wait": 0,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_modal_add_setting_group_cancel",
+                "wait": 0,
+                "index": 0
+            }
+        ]
+    },
+    {
+        "name": "CCR Report Generate and Download",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/ccr-reports/ccr-reports-listing",
+                "wait": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//button[contains(@class, 'btn add-button')]",
+                "wait": 11,
+                "index": 0
+            },
+            {
+                "action": "click",
+                "selector_type": "xpath",
+                "selector_value": "//div[contains(@class, 'el-dropdown')]",
+                "wait": 2,
+                "index": 1
+            }
+        ]
+    },
+    {
+        "name": "Refresh",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://app.powerbi.com/groups/71153f62-9f44-47cd-b6d5-c3e56e8977ba/list?experience=power-bi",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Prod Error Test",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 2
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/users-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/client-individual-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/client-companies-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/client-group-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/brokers/brokers-agents-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/notification-templates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/feetype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/funder-interest-rate-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/introducer-types-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/assetstype-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/lenders-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/service-providers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/variable-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/financial-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/forms-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/history-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/forms-type-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=2",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=3",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/tasks-listing?lendingTypeId=4",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/system/settings/settings-deal-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/ccr-reports/ccr-reports-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/loan-notes/csx-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/loan-notes/intercompany-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/loan-notes/exception-loans",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals-listing-requests",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-comparison",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-profile-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-lifetime",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-notes",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/drawdown-linked-cases",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/borrowers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/forms-status-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/introducers-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals-create-update/{{DEAL}}",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/base-floor-rates-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/assets-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/exit-fees-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/my-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/completed-tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/tasks-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/deal-settings-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/documents-listing-category",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/documents-manager-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/activity-logs",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/quotes-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-from-deal",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/notification-rules-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/case-manager/deals/{{DEAL}}/settlement-listing",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/client-companies-logs/261",
+                "wait": 0
+            },
+            {
+                "action": "visit",
+                "url": "https://lendingdynamics.com/dashboard#/user-management/brokers/brokers-listing-logs/514",
+                "wait": 0
+            }
+        ]
+    },
+    {
+        "name": "Create Case",
+        "steps": [
+            {
+                "action": "visit",
+                "url": "https://qa.lendingdynamics.com/dashboard#/sign-in",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "placeholder",
+                "selector_value": "Email",
+                "wait": 0,
+                "text": "{{LoginEmail}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_sign_in_submit",
+                "wait": 0
+            },
+            {
+                "action": "input",
+                "selector_type": "name",
+                "selector_value": "code",
+                "wait": 0,
+                "text": "{{Password}}"
+            },
+            {
+                "action": "click",
+                "selector_type": "id",
+                "selector_value": "kt_validate_access_code",
+                "wait": 0
+            }
+        ]
+    }
+]

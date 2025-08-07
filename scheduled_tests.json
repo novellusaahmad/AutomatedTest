@@ -1,0 +1,11 @@
+[
+    {
+        "test_name": "log",
+        "time": "16:45:00",
+        "days": [
+            "Monday"
+        ],
+        "created_at": "2025-08-04T16:43:07.413311",
+        "csv_path": "results\\scheduled_log_data.csv"
+    }
+]
