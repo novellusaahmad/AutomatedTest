@@ -105,6 +105,72 @@ def save_scheduled_tests(scheduled_tests):
     with open(SCHEDULED_TESTS_FILE, "w") as file:
         json.dump(scheduled_tests, file, indent=4)
 
+def start_recording(url):
+    """Launch browser and record user interactions."""
+    options = Options()
+    options.add_argument("--incognito")
+    driver = webdriver.Chrome(service=ChromeService(), options=options)
+    driver.maximize_window()
+    driver.get(url)
+    recorder_script = '''
+    window.__recordedSteps = [];
+    function cssPath(el){
+        if (!(el instanceof Element)) return '';
+        var path = [];
+        while (el.nodeType === Node.ELEMENT_NODE){
+            var selector = el.nodeName.toLowerCase();
+            if (el.id){
+                selector += '#' + el.id;
+                path.unshift(selector);
+                break;
+            } else {
+                var sib = el, nth = 1;
+                while(sib = sib.previousElementSibling){
+                    if (sib.nodeName.toLowerCase() == selector) nth++;
+                }
+                if (nth != 1) selector += ':nth-of-type(' + nth + ')';
+            }
+            path.unshift(selector);
+            el = el.parentNode;
+        }
+        return path.join(' > ');
+    }
+    document.addEventListener('click', function(e){
+        window.__recordedSteps.push({
+            action: 'click',
+            selector_type: 'css_selector',
+            selector_value: cssPath(e.target)
+        });
+    }, true);
+    document.addEventListener('input', function(e){
+        window.__recordedSteps.push({
+            action: 'input',
+            selector_type: 'css_selector',
+            selector_value: cssPath(e.target),
+            text: e.target.value
+        });
+    }, true);
+    '''
+    driver.execute_script(recorder_script)
+    return driver
+
+def stop_recording(driver, start_url):
+    """Stop recording and return recorded steps."""
+    events = driver.execute_script("return window.__recordedSteps || [];")
+    driver.quit()
+    steps = [{"action": "visit", "url": start_url, "wait": 1}]
+    for event in events:
+        step = {
+            "action": event.get("action"),
+            "selector_type": event.get("selector_type"),
+            "selector_value": event.get("selector_value"),
+            "wait": 1
+        }
+        if event.get("action") == "input":
+            step["text"] = event.get("text", "")
+        steps.append(step)
+    return steps
+
 def find_element(driver, selector_type, selector_value, index=0):
     """Universal element finder with multiple selector types"""
     selectors = {
@@ -477,6 +543,10 @@ if "active_test_name" not in st.session_state:
     st.session_state.active_test_name = ""
 if "scheduled_tests" not in st.session_state:
     st.session_state.scheduled_tests = load_scheduled_tests()
+if "record_driver" not in st.session_state:
+    st.session_state.record_driver = None
+if "record_url" not in st.session_state:
+    st.session_state.record_url = ""
 
 # Sidebar for test case management
 with st.sidebar:
@@ -548,7 +618,26 @@ with st.sidebar:
                     step["text"] = text
                 st.session_state.steps.append(step)
             st.rerun()
-            
+
+    # Recording helper
+    st.subheader("🎥 Record Steps")
+    record_url = st.text_input("URL to Record", key="record_url")
+    col_rec1, col_rec2 = st.columns(2)
+    with col_rec1:
+        if st.session_state.record_driver is None and st.button("Start Recording"):
+            if record_url:
+                st.session_state.record_driver = start_recording(record_url)
+                st.session_state.record_url = record_url
+                st.success("Recording started. Interact with the browser and then stop recording.")
+            else:
+                st.warning("Please provide a URL to record.")
+    with col_rec2:
+        if st.session_state.record_driver is not None and st.button("Stop Recording"):
+            recorded_steps = stop_recording(st.session_state.record_driver, st.session_state.record_url)
+            st.session_state.steps.extend(recorded_steps)
+            st.session_state.record_driver = None
+            st.success("Recording stopped and steps added.")
+
     # HTML selector helper
     st.subheader("🔍 Identify Selector from HTML Tag")
     html_tag_input = st.text_area("Enter the HTML Tag", height=200)
