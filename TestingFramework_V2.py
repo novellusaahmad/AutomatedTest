@@ -106,58 +106,68 @@ def save_scheduled_tests(scheduled_tests):
         json.dump(scheduled_tests, file, indent=4)
 
 def start_recording(url):
-    """Launch browser and record user interactions."""
+    """Launch browser and record user interactions across pages."""
     options = Options()
     options.add_argument("--incognito")
     driver = webdriver.Chrome(service=ChromeService(), options=options)
     driver.maximize_window()
-    driver.get(url)
-    recorder_script = '''
-    window.__recordedSteps = [];
-    function cssPath(el){
-        if (!(el instanceof Element)) return '';
-        var path = [];
-        while (el.nodeType === Node.ELEMENT_NODE){
-            var selector = el.nodeName.toLowerCase();
-            if (el.id){
-                selector += '#' + el.id;
-                path.unshift(selector);
-                break;
-            } else {
-                var sib = el, nth = 1;
-                while(sib = sib.previousElementSibling){
-                    if (sib.nodeName.toLowerCase() == selector) nth++;
-                }
-                if (nth != 1) selector += ':nth-of-type(' + nth + ')';
-            }
-            path.unshift(selector);
-            el = el.parentNode;
+
+    recorder_script = """
+        window.__recordedSteps = JSON.parse(localStorage.getItem('__recordedSteps') || '[]');
+        function recordStep(step){
+            window.__recordedSteps.push(step);
+            localStorage.setItem('__recordedSteps', JSON.stringify(window.__recordedSteps));
         }
-        return path.join(' > ');
-    }
-    document.addEventListener('click', function(e){
-        window.__recordedSteps.push({
-            action: 'click',
-            selector_type: 'css_selector',
-            selector_value: cssPath(e.target)
-        });
-    }, true);
-    document.addEventListener('input', function(e){
-        window.__recordedSteps.push({
-            action: 'input',
-            selector_type: 'css_selector',
-            selector_value: cssPath(e.target),
-            text: e.target.value
-        });
-    }, true);
-    '''
-    driver.execute_script(recorder_script)
+        function cssPath(el){
+            if (!(el instanceof Element)) return '';
+            var path = [];
+            while (el.nodeType === Node.ELEMENT_NODE){
+                var selector = el.nodeName.toLowerCase();
+                if (el.id){
+                    selector += '#' + el.id;
+                    path.unshift(selector);
+                    break;
+                } else {
+                    var sib = el, nth = 1;
+                    while(sib = sib.previousElementSibling){
+                        if (sib.nodeName.toLowerCase() == selector) nth++;
+                    }
+                    if (nth != 1) selector += ':nth-of-type(' + nth + ')';
+                }
+                path.unshift(selector);
+                el = el.parentNode;
+            }
+            return path.join(' > ');
+        }
+        document.addEventListener('click', function(e){
+            recordStep({
+                action: 'click',
+                selector_type: 'css_selector',
+                selector_value: cssPath(e.target)
+            });
+        }, true);
+        document.addEventListener('input', function(e){
+            recordStep({
+                action: 'input',
+                selector_type: 'css_selector',
+                selector_value: cssPath(e.target),
+                text: e.target.value
+            });
+        }, true);
+    """
+
+    # Ensure the recorder script is injected on every new document
+    driver.execute_cdp_cmd('Page.addScriptToEvaluateOnNewDocument', {'source': recorder_script})
+    driver.get(url)
+    # Start with a clean slate for this session
+    driver.execute_script("localStorage.removeItem('__recordedSteps'); window.__recordedSteps = [];")
     return driver
 
 def stop_recording(driver, start_url):
     """Stop recording and return recorded steps."""
-    events = driver.execute_script("return window.__recordedSteps || [];")
+    events_json = driver.execute_script("return localStorage.getItem('__recordedSteps');")
     driver.quit()
+    events = json.loads(events_json) if events_json else []
     steps = [{"action": "visit", "url": start_url, "wait": 1}]
     for event in events:
         step = {
