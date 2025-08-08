@@ -651,6 +651,9 @@ st.markdown(
     """
     <style>
         .block-container {padding-top: 2rem;}
+        body {
+            background-color: #AD965F;
+        }
         .stButton>button {
             background-color: #4F46E5;
             color: white;
