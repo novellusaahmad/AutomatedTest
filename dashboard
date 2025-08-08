@@ -5,7 +5,6 @@ Use below html tag for RTL version
 -->
 <html lang="en">
   <head>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0kolgm72BWfFtUEImnP4W7pk1pMhmQ84&libraries=places"></script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -13,10 +12,8 @@ Use below html tag for RTL version
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"
-    />
+    <!-- Removed Google Maps API script as it was not used -->
+    <!-- Removed external Google Fonts reference to avoid unnecessary API calls -->
     <link rel="stylesheet" href="/fonticon/fonticon.css" />
     <link rel="stylesheet" href="/splash-screen.css" />
     <title>Automated Test Dashboard</title>
