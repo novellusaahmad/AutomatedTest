@@ -12,8 +12,6 @@ Use below html tag for RTL version
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <link rel="icon" href="/favicon.ico" />
-    <!-- Removed Google Maps API script as it was not used -->
-    <!-- Removed external Google Fonts reference to avoid unnecessary API calls -->
     <link rel="stylesheet" href="/fonticon/fonticon.css" />
     <link rel="stylesheet" href="/splash-screen.css" />
     <title>Automated Test Dashboard</title>
