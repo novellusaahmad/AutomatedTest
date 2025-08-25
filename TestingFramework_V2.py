@@ -13,6 +13,7 @@ import pandas as pd
 import re
 import csv
 import io
+import base64
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from PIL import Image
@@ -42,6 +43,52 @@ def get_image_scale(img_path, target_width_px=200, target_height_px=200):
     except Exception as e:
         print(f"Error calculating image scale: {e}")
         return 1.0, 1.0
+
+
+def insert_image_or_text(worksheet, row_num, col_num, cell_value, cell_format):
+    """Insert an image into a worksheet cell if possible, otherwise write text."""
+    worksheet.set_column(col_num, col_num, 30)
+    if isinstance(cell_value, str):
+        if os.path.exists(cell_value):
+            try:
+                x_scale, y_scale = get_image_scale(cell_value, 200, 150)
+                worksheet.set_row(row_num, 120)
+                worksheet.insert_image(
+                    row_num,
+                    col_num,
+                    cell_value,
+                    {"x_scale": x_scale, "y_scale": y_scale, "object_position": 1},
+                )
+                return
+            except Exception as e:
+                worksheet.write(row_num, col_num, f"Image Error: {str(e)}", cell_format)
+                return
+        try:
+            b64_data = cell_value.split(",", 1)[1] if cell_value.startswith("data:image") else cell_value
+            image_bytes = base64.b64decode(b64_data)
+            image_data = io.BytesIO(image_bytes)
+            with Image.open(image_data) as img:
+                original_width, original_height = img.size
+            x_scale = 200 / original_width
+            y_scale = 150 / original_height
+            image_data.seek(0)
+            worksheet.set_row(row_num, 120)
+            worksheet.insert_image(
+                row_num,
+                col_num,
+                "",
+                {
+                    "image_data": image_data,
+                    "x_scale": x_scale,
+                    "y_scale": y_scale,
+                    "object_position": 1,
+                },
+            )
+            return
+        except Exception as e:
+            worksheet.write(row_num, col_num, f"Image Error: {str(e)}", cell_format)
+            return
+    worksheet.write(row_num, col_num, str(cell_value), cell_format)
 
 def identify_selectors_from_html(html_tag):
     """Extract selectors from HTML snippet in priority order"""
@@ -589,20 +636,7 @@ def create_excel_with_screenshots(logs_df, writer):
                     cell_value = sheet_df.iloc[row_num - 1, col_num]
                     
                     if col_name == "screenshot":
-                        # Set column width for screenshot column
-                        worksheet.set_column(col_num, col_num, 30)
-                        
-                        # Insert image if path exists
-                        if isinstance(cell_value, str) and os.path.exists(cell_value):
-                            try:
-                                x_scale, y_scale = get_image_scale(cell_value, 200, 150)
-                                worksheet.set_row(row_num, 120)
-                                worksheet.insert_image(
-                                    row_num, col_num, cell_value,
-                                    {'x_scale': x_scale, 'y_scale': y_scale, 'object_position': 1}
-                                )
-                            except Exception as e:
-                                worksheet.write(row_num, col_num, f"Image Error: {str(e)}", cell_format)
+                        insert_image_or_text(worksheet, row_num, col_num, cell_value, cell_format)
                     else:
                         worksheet.write(row_num, col_num, str(cell_value), cell_format)
                         # Auto-adjust column width
@@ -624,17 +658,7 @@ def create_excel_with_screenshots(logs_df, writer):
                 cell_value = logs_df.iloc[row_num - 1, col_num]
                 
                 if col_name == "screenshot":
-                    worksheet.set_column(col_num, col_num, 30)
-                    if isinstance(cell_value, str) and os.path.exists(cell_value):
-                        try:
-                            x_scale, y_scale = get_image_scale(cell_value, 200, 150)
-                            worksheet.set_row(row_num, 120)
-                            worksheet.insert_image(
-                                row_num, col_num, cell_value,
-                                {'x_scale': x_scale, 'y_scale': y_scale, 'object_position': 1}
-                            )
-                        except Exception as e:
-                            worksheet.write(row_num, col_num, f"Image Error: {str(e)}", cell_format)
+                    insert_image_or_text(worksheet, row_num, col_num, cell_value, cell_format)
                 else:
                     worksheet.write(row_num, col_num, str(cell_value), cell_format)
                     max_len = max(len(str(cell_value)), len(col_name)) + 2
