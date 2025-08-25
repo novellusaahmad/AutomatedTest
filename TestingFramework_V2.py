@@ -907,88 +907,87 @@ with st.expander("⏰ Schedule Tests", expanded=False):
         st.info("No tests scheduled yet")
 
 # Historical Results Section
-with st.expander("📜 Historical Test Results", expanded=True):
-    st.subheader("Previous Test Runs")
-    
-    historical_results = get_historical_results()
-    
-    if historical_results:
-        # Filter options
-        col1, col2 = st.columns(2)
-        with col1:
-            filter_test = st.selectbox("Filter by Test", ["All"] + list(set(r["test_name"] for r in historical_results)))
-        with col2:
-            days_back = st.slider("Show results from last N days", 1, 30, 7)
-        
-        cutoff_date = datetime.now() - timedelta(days=days_back)
-        filtered_results = [r for r in historical_results 
-                          if r["timestamp"] >= cutoff_date and 
-                          (filter_test == "All" or r["test_name"] == filter_test)]
-        
-        if not filtered_results:
-            st.info("No results match your filters")
-        else:
-            for result in filtered_results:
-                with st.expander(f"{result['test_name']} - {result['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}", expanded=False):
-                    # Display basic info
-                    col1, col2 = st.columns([3,1])
-                    with col1:
-                        st.write(f"**Test Name:** {result['test_name']}")
-                        st.write(f"**Run Time:** {result['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}")
-                        if result['data'].get('csv_used'):
-                            st.write(f"**CSV Used:** {os.path.basename(result['data']['csv_used'])}")
-                    
-                    # Create a DataFrame from the logs
-                    try:
-                        logs_df = pd.DataFrame(result['data']['logs'])
-                        
-                        if not logs_df.empty:
-                            # Display the logs
-                            st.dataframe(logs_df)
-                            
-                            # Download buttons
-                            st.write("### Download Options")
-                            col1, col2, col3 = st.columns(3)
-                            
-                            with col1:
-                                # CSV Download
-                                csv = logs_df.to_csv(index=False).encode('utf-8')
-                                st.download_button(
-                                    label="📥 Download CSV",
-                                    data=csv,
-                                    file_name=f"{result['test_name']}_{result['timestamp'].strftime('%Y%m%d_%H%M%S')}.csv",
-                                    mime='text/csv',
-                                    key=f"csv_{result['filename']}"
-                                )
-                            
-                            with col2:
-                                # Excel Download with screenshots
-                                excel_buffer = io.BytesIO()
-                                with pd.ExcelWriter(excel_buffer, engine='xlsxwriter') as writer:
-                                    create_excel_with_screenshots(logs_df, writer)
-                                excel_buffer.seek(0)
-                                st.download_button(
-                                    label="📥 Download Excel with Screenshots",
-                                    data=excel_buffer,
-                                    file_name=f"{result['test_name']}_{result['timestamp'].strftime('%Y%m%d_%H%M%S')}.xlsx",
-                                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-                                    key=f"excel_{result['filename']}"
-                                )
-                            
-                            with col3:
-                                # Full JSON Download
-                                json_data = json.dumps(result['data'], indent=2).encode('utf-8')
-                                st.download_button(
-                                    label="📥 Download JSON",
-                                    data=json_data,
-                                    file_name=result['filename'],
-                                    mime='application/json',
-                                    key=f"json_{result['filename']}"
-                                )
-                    except Exception as e:
-                        st.error(f"Error displaying results: {e}")
+st.subheader("📜 Historical Test Results")
+
+historical_results = get_historical_results()
+
+if historical_results:
+    # Filter options
+    col1, col2 = st.columns(2)
+    with col1:
+        filter_test = st.selectbox("Filter by Test", ["All"] + list(set(r["test_name"] for r in historical_results)))
+    with col2:
+        days_back = st.slider("Show results from last N days", 1, 30, 7)
+
+    cutoff_date = datetime.now() - timedelta(days=days_back)
+    filtered_results = [r for r in historical_results
+                        if r["timestamp"] >= cutoff_date and
+                        (filter_test == "All" or r["test_name"] == filter_test)]
+
+    if not filtered_results:
+        st.info("No results match your filters")
     else:
-        st.info("No historical test results available")
+        for result in filtered_results:
+            with st.expander(f"{result['test_name']} - {result['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}", expanded=False):
+                # Display basic info
+                col1, col2 = st.columns([3,1])
+                with col1:
+                    st.write(f"**Test Name:** {result['test_name']}")
+                    st.write(f"**Run Time:** {result['timestamp'].strftime('%Y-%m-%d %H:%M:%S')}")
+                    if result['data'].get('csv_used'):
+                        st.write(f"**CSV Used:** {os.path.basename(result['data']['csv_used'])}")
+
+                # Create a DataFrame from the logs
+                try:
+                    logs_df = pd.DataFrame(result['data']['logs'])
+
+                    if not logs_df.empty:
+                        # Display the logs
+                        st.dataframe(logs_df)
+
+                        # Download buttons
+                        st.write("### Download Options")
+                        col1, col2, col3 = st.columns(3)
+
+                        with col1:
+                            # CSV Download
+                            csv = logs_df.to_csv(index=False).encode('utf-8')
+                            st.download_button(
+                                label="📥 Download CSV",
+                                data=csv,
+                                file_name=f"{result['test_name']}_{result['timestamp'].strftime('%Y%m%d_%H%M%S')}.csv",
+                                mime='text/csv',
+                                key=f"csv_{result['filename']}"
+                            )
+
+                        with col2:
+                            # Excel Download with screenshots
+                            excel_buffer = io.BytesIO()
+                            with pd.ExcelWriter(excel_buffer, engine='xlsxwriter') as writer:
+                                create_excel_with_screenshots(logs_df, writer)
+                            excel_buffer.seek(0)
+                            st.download_button(
+                                label="📥 Download Excel with Screenshots",
+                                data=excel_buffer,
+                                file_name=f"{result['test_name']}_{result['timestamp'].strftime('%Y%m%d_%H%M%S')}.xlsx",
+                                mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                                key=f"excel_{result['filename']}"
+                            )
+
+                        with col3:
+                            # Full JSON Download
+                            json_data = json.dumps(result['data'], indent=2).encode('utf-8')
+                            st.download_button(
+                                label="📥 Download JSON",
+                                data=json_data,
+                                file_name=result['filename'],
+                                mime='application/json',
+                                key=f"json_{result['filename']}"
+                            )
+                except Exception as e:
+                    st.error(f"Error displaying results: {e}")
+else:
+    st.info("No historical test results available")
 
 # Test Execution Section
 st.subheader("🚀 Run Tests")
