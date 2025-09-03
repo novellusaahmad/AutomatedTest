@@ -718,6 +718,84 @@ if "recording_url" not in st.session_state:
 if "record_url_input" not in st.session_state:
     st.session_state.record_url_input = ""
 
+
+#Refresh Xero
+
+from datetime import datetime
+
+query_params = st.query_params
+run_script = query_params.get("run_script", "false").lower() == "true"
+
+def close_window_js():
+    st.markdown(
+        """
+        <script>
+        window.close();
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+
+def open_in_new_tab_js():
+    st.markdown(
+        """
+        <script>
+        window.open(window.location.href, '_blank');
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+
+def run_shell_script():
+    start_time = datetime.now()
+    with st.spinner("Running script..."):
+        result = subprocess.run(
+            ["/home/ubuntu_admin/xero/run_multiple_scripts.sh"],
+            capture_output=True,
+            text=True
+        )
+    end_time = datetime.now()
+    elapsed = end_time - start_time
+
+    # Display summary
+    st.markdown(f"**🕒 Started:** {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+    st.markdown(f"**🕔 Ended:** {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+    st.markdown(f"**⏱️ Duration:** {str(elapsed).split('.')[0]}")
+
+    if result.returncode == 0:
+        st.success("✅ Data refresh completed successfully!")
+    else:
+        st.error("❌ Data refresh failed!")
+
+    return result
+
+if run_script:
+    run_shell_script()
+    close_window_js()
+else:
+    if st.button("🔄 Xero Data Refresh"):
+        run_shell_script()
+    # Optionally, suggest to the user to open it in a new tab
+    #st.markdown("To automatically close this tab after the refresh, [click here to open in a new tab](javascript:window.open(window.location.href, '_blank'));")
+
+### HTML TAG SEARCH MOVED TO THE SIDE BAR###
+#st.subheader("🔍 Identify Selector from HTML Tag")
+#
+#html_tag_input = st.text_area("Enter the HTML Tag", height=100)
+#
+#if html_tag_input:
+#    selectors = identify_selectors_from_html(html_tag_input)
+#    
+#    if selectors:
+#        st.write("### Suggested Selectors:")
+#        for selector_type, selector_value in selectors.items():
+#            st.write(f"- **{selector_type}**: `{selector_value}`")
+#    else:
+#        st.warning("Unable to parse the HTML tag. Please check the input format.")
+
+
+
+
 # Sidebar for test case management
 with st.sidebar:
     st.image("Logo.png", width=200)
