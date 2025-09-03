@@ -1,3 +1,9 @@
 body, .splash-screen {
   background-color: #AD965F;
 }
+
+header,
+nav,
+.navbar {
+  background-color: #B59A60 !important;
+}
