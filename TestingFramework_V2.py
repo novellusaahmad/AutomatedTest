@@ -21,6 +21,7 @@ import schedule
 import threading
 import shutil
 from pathlib import Path
+import tempfile
 
 # Constants
 TARGET_WIDTH_PX = 100
@@ -164,8 +165,15 @@ def start_recording(url):
     """Launch browser and record user interactions across pages."""
     options = Options()
     options.add_argument("--incognito")
-    driver = webdriver.Chrome(service=ChromeService(), options=options)
+    profile_dir = tempfile.mkdtemp(prefix="selenium_profile_")
+    options.add_argument(f"--user-data-dir={profile_dir}")
+    try:
+        driver = webdriver.Chrome(service=ChromeService(), options=options)
+    except Exception:
+        shutil.rmtree(profile_dir, ignore_errors=True)
+        raise
     driver.maximize_window()
+    setattr(driver, "_temp_profile_dir", profile_dir)
 
     recorder_script = """
         window.__recordedSteps = JSON.parse(localStorage.getItem('__recordedSteps') || '[]');
@@ -257,10 +265,22 @@ def start_recording(url):
     driver.execute_script("localStorage.removeItem('__recordedSteps'); window.__recordedSteps = [];")
     return driver
 
+def cleanup_driver(driver, profile_dir=None):
+    """Quit WebDriver and clean up any temporary user data directories."""
+    if driver is not None:
+        profile_dir = getattr(driver, "_temp_profile_dir", profile_dir)
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
+    if profile_dir and os.path.exists(profile_dir):
+        shutil.rmtree(profile_dir, ignore_errors=True)
+
 def stop_recording(driver, start_url):
     """Stop recording and return recorded steps."""
     events_json = driver.execute_script("return localStorage.getItem('__recordedSteps');")
-    driver.quit()
+    cleanup_driver(driver)
     events = json.loads(events_json) if events_json else []
     steps = [{"action": "visit", "url": start_url, "wait": 1}]
     for event in events:
@@ -452,6 +472,8 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
     for _ in range(repeat):
+        driver = None
+        profile_dir = None
         try:
             options = Options()
             if headless:
@@ -459,12 +481,16 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
             options.add_argument("--incognito")
             options.add_argument("--disable-extensions")
             options.add_argument("--disable-cache")
-            
+
+            profile_dir = tempfile.mkdtemp(prefix="selenium_profile_")
+            options.add_argument(f"--user-data-dir={profile_dir}")
+
             driver = webdriver.Chrome(service=ChromeService(), options=options)
+            setattr(driver, "_temp_profile_dir", profile_dir)
             driver.maximize_window()
             driver.delete_all_cookies()
             driver.refresh()
-            driver.refresh()  
+            driver.refresh()
 
             for step in test_case["steps"]:
                 action = step["action"]
@@ -599,13 +625,10 @@ def run_test_case(test_case, headless=True, repeat=1, csv_row=None):
                 if wait_time > 0:
                     time.sleep(wait_time)
 
-            driver.quit()
         except Exception as e:
             logs_output.append({"status": f"❌ Error: {e}"})
-            try:
-                driver.quit()
-            except:
-                pass
+        finally:
+            cleanup_driver(driver, profile_dir)
     return logs_output
 
 def create_excel_with_screenshots(logs_df, writer):
